@@ -56,13 +56,17 @@ limitations under the License.
     <dubbo:registry id="hpRegistryCenter" address="zookeeper://10.75.167.109:2481?backup=10.75.166.79:2481" />
     <dubbo:registry id="dellRegistryCenter" address="zookeeper://10.75.167.109:2482?backup=10.75.166.79:2482" default="false" />
 
-<dubbo:registry id="hpRegistryCenter" address="zookeeper://10.75.167.109:2182?backup=10.75.167.109:2183,10.75.167.109:2184" />
+    <dubbo:registry id="hpRegistryCenter" address="zookeeper://10.75.167.109:2182?backup=10.75.167.109:2183,10.75.167.109:2184" />
+
+    <dubbo:registry id="hpRegistryCenter" address="zookeeper://zk1.lejr-test.local:2181?backup=zk2.lejr-test.local:2181,zk3.lejr-test.local:2181" />
 
 
     -->
 
 
-    <dubbo:registry id="hpRegistryCenter" address="zookeeper://zk1.lejr-test.local:2181?backup=zk2.lejr-test.local:2181,zk3.lejr-test.local:2181" />
+
+    <dubbo:registry id="macRegistryCenter" address="zookeeper://10.75.167.77:2182?backup=10.75.167.77:2183,10.75.167.77:2184" />
+    <dubbo:registry id="hpRegistryCenter" address="zookeeper://10.75.167.109:2182?backup=10.75.167.109:2183,10.75.167.109:2184" default="false"/>
 
 
     <!--
@@ -71,6 +75,16 @@ limitations under the License.
     <dubbo:registry id="dellRegistryCenter" address="zookeeper://10.75.166.79:2282" default="false" />
     -->
 
+    <!--
+
+    经验证,这种方式(两个注册中心,每个注册中心三台机器)可行,
+    在两台机器中都可以成功注册生产者,也都可以在两台机器上分别被消费
+    停掉集群中的1台机器,zookeeper集群还是能对外提供服务
+    <dubbo:registry id="macRegistryCenter" address="zookeeper://10.75.167.77:2182?backup=10.75.167.77:2183,10.75.167.77:2184" />
+    <dubbo:registry id="hpRegistryCenter" address="zookeeper://10.75.167.109:2182?backup=10.75.167.109:2183,10.75.167.109:2184" default="false"/>
+    <dubbo:service interface="com.csz.rpc.api.DubboServiceRpcApi" ref="dubboServiceRpcApi" registry="hpRegistryCenter,macRegistryCenter"/>
+
+    -->
 
     <!--
 
@@ -91,7 +105,7 @@ limitations under the License.
     <bean id="dubboServiceRpcApi" class="com.csz.rpc.impl.DubboServiceRpcImpl"/>
 
     <!-- declare the service interface to be exported -->
-    <dubbo:service interface="com.csz.rpc.api.DubboServiceRpcApi" ref="dubboServiceRpcApi" registry="hpRegistryCenter"/>
+    <dubbo:service interface="com.csz.rpc.api.DubboServiceRpcApi" ref="dubboServiceRpcApi" registry="hpRegistryCenter,macRegistryCenter"/>
 
 
     <!--

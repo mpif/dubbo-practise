@@ -49,9 +49,13 @@ limitations under the License.
 
 <dubbo:registry id="hpRegistryCenter" address="zookeeper://10.75.167.109:2182?backup=10.75.167.109:2183,10.75.167.109:2184" />
 
+<dubbo:registry id="hpRegistryCenter" address="zookeeper://zk1.lejr-test.local:2181?backup=zk2.lejr-test.local:2181,zk3.lejr-test.local:2181" />
+
+
     -->
 
-    <dubbo:registry id="hpRegistryCenter" address="zookeeper://zk1.lejr-test.local:2181?backup=zk2.lejr-test.local:2181,zk3.lejr-test.local:2181" />
+
+    <dubbo:registry id="hpRegistryCenter" address="zookeeper://10.75.167.109:2182?backup=10.75.167.109:2183,10.75.167.109:2184" />
 
 
 
