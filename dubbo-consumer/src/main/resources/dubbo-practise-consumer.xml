@@ -34,12 +34,33 @@ limitations under the License.
 
 
     <dubbo:registry id="hpRegistryCenter" address="zookeeper://10.75.167.109:2182?backup=10.75.167.109:2183,10.75.167.109:2184" />
+<dubbo:registry id="hpRegistryCenter" address="10.75.167.109:2182|10.75.167.109:2183|10.75.167.109:2184" />
+
+
+<dubbo:registry id="hpRegistryCenter" address="zookeeper://10.75.167.109:2281" />
+
+
+
+<dubbo:registry id="dellRegistryCenter" address="zookeeper://10.75.166.79:2381?backup=10.75.166.79:2382" />
+
+<dubbo:registry id="hpRegistryCenter" address="zookeeper://10.75.167.109:2381?backup=10.75.167.109:2382" />
+
+<dubbo:registry id="hpRegistryCenter" address="zookeeper://10.75.167.109:2481?backup=10.75.166.79:2481" />
+
+<dubbo:registry id="hpRegistryCenter" address="zookeeper://10.75.167.109:2182?backup=10.75.167.109:2183,10.75.167.109:2184" />
 
     -->
 
-    <dubbo:registry id="hpRegistryCenter" address="10.75.167.109:2182|10.75.167.109:2183|10.75.167.109:2184" />
+    <dubbo:registry id="hpRegistryCenter" address="zookeeper://zk1.lejr-test.local:2181?backup=zk2.lejr-test.local:2181,zk3.lejr-test.local:2181" />
+
+
 
     <!--
+
+<dubbo:registry id="hpRegistryCenter" address="zookeeper://10.75.167.109:2281" />
+<dubbo:registry id="hpRegistryCenter" address="zookeeper://10.75.167.109:2282" />
+
+    <dubbo:registry id="dellRegistryCenter" address="zookeeper://10.75.167.109:2282" default="false" />
 
     <dubbo:registry id="hpRegistryCenter" address="zookeeper://10.75.167.109:7181?backup=10.75.167.109:7182,10.75.167.109:7183" />
 
