@@ -54,8 +54,8 @@ limitations under the License.
 
     -->
 
-
-    <dubbo:registry id="hpRegistryCenter" address="zookeeper://10.75.167.109:2182?backup=10.75.167.109:2183,10.75.167.109:2184" />
+    <!-- group必须与生产者的group一致,否则会报错 -->
+    <dubbo:registry id="hpRegistryCenter" address="zookeeper://10.75.167.109:2182?backup=10.75.167.109:2183,10.75.167.109:2184" group="test" />
 
 
 
