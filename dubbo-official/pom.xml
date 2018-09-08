@@ -25,7 +25,8 @@
 	<packaging>pom</packaging>
 	<name>dubbo-official</name>
 	<artifactId>dubbo-official</artifactId>
-	
+	<version>0.0.1</version>
+
 	<description>The parent project of dubbo</description>
 	<url>http://code.alibabatech.com/wiki/display/dubbo</url>
 	<inceptionYear>2011</inceptionYear>

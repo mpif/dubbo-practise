@@ -5,7 +5,7 @@
     <groupId>com.csz</groupId>  
     <artifactId>dubbo-practise</artifactId>  
     <version>0.0.1</version>  
-    <packaging>war</packaging>
+    <packaging>pom</packaging>
     <name>dubbo-practise</name>  
     <modules> 
         <module>dubbo-provider</module>
