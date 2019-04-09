@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Licensed to the Apache Software Foundation (ASF) under one or more
+contributor license agreements.  See the NOTICE file distributed with
+this work for additional information regarding copyright ownership.
+The ASF licenses this file to You under the Apache License, Version 2.0
+(the "License"); you may not use this file except in compliance with
+the License.  You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:task="http://www.springframework.org/schema/task"
+
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+       http://code.alibabatech.com/schema/dubbo
+       http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context-4.3.xsd
+       http://www.springframework.org/schema/task
+	   http://www.springframework.org/schema/task/spring-task-4.0.xsd ">
+
+    <context:annotation-config />
+    <context:component-scan base-package="com.csz.rpc.impl">
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+        <context:exclude-filter type="annotation" expression="org.springframework.web.bind.annotation.RestController" />
+        <context:exclude-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice"/>
+    </context:component-scan>
+
+    <!-- provider's application name, used for tracing dependency relationship -->
+    <dubbo:application name="demo-provider"/>
+
+    <!-- use multicast registry center to export service -->
+    <!--
+    <dubbo:registry address="multicast://224.5.6.7:1234"/>
+
+    <dubbo:registry id="hpRegistryCenter" address="zookeeper://10.75.167.109:2182?backup=10.75.167.109:2183,10.75.167.109:2184" />
+    <dubbo:registry id="dellRegistryCenter" address="zookeeper://10.75.166.79:3181?backup=10.75.166.79:3182,10.75.166.79:3183" />
+
+    <dubbo:registry id="hpRegistryCenter" address="10.75.167.109:2182|10.75.167.109:2183|10.75.167.109:2184" />
+    <dubbo:registry id="dellRegistryCenter" address="10.75.166.79:3181|10.75.166.79:3182|10.75.166.79:3183" />
+
+    <dubbo:registry id="hpRegistryCenter" address="zookeeper://10.75.167.109:2182" />
+    <dubbo:registry id="dellRegistryCenter" address="zookeeper://10.75.166.79:3181" default="false" />
+
+    <dubbo:registry id="hpRegistryCenter" address="zookeeper://10.75.167.109:2481?backup=10.75.166.79:2481" />
+    <dubbo:registry id="dellRegistryCenter" address="zookeeper://10.75.167.109:2482?backup=10.75.166.79:2482" default="false" />
+
+    <dubbo:registry id="hpRegistryCenter" address="zookeeper://10.75.167.109:2182?backup=10.75.167.109:2183,10.75.167.109:2184" />
+
+    <dubbo:registry id="hpRegistryCenter" address="zookeeper://zk1.lejr-test.local:2181?backup=zk2.lejr-test.local:2181,zk3.lejr-test.local:2181" />
+
+
+    -->
+
+
+
+    <!--<dubbo:registry id="macRegistryCenter" address="zookeeper://10.75.167.77:2182?backup=10.75.167.77:2183,10.75.167.77:2184" />-->
+
+    <!-- group必须与消费者的group一致,否则会报错
+    <dubbo:registry id="hpRegistryCenter" address="zookeeper://10.75.167.77:2182?backup=10.75.167.77:2183,10.75.167.77:2184" default="false" group="std-test" />
+    -->
+
+    <!-- dubbo直连 -->
+    <dubbo:registry address="N/A"/>
+
+
+    <!--
+    经验证, 这种方式(两个注册中心,每个注册中心只有一台机器)可行, 在两台机器中都可以成功注册生产者, 也都可以在两台机器上分别被消费
+    <dubbo:registry id="hpRegistryCenter" address="zookeeper://10.75.167.109:2281" />
+    <dubbo:registry id="dellRegistryCenter" address="zookeeper://10.75.166.79:2282" default="false" />
+    -->
+
+    <!--
+
+    经验证,这种方式(两个注册中心,每个注册中心三台机器)可行,
+    在两台机器中都可以成功注册生产者,也都可以在两台机器上分别被消费
+    停掉集群中的1台机器,zookeeper集群还是能对外提供服务
+    <dubbo:registry id="macRegistryCenter" address="zookeeper://10.75.167.77:2182?backup=10.75.167.77:2183,10.75.167.77:2184" />
+    <dubbo:registry id="hpRegistryCenter" address="zookeeper://10.75.167.109:2182?backup=10.75.167.109:2183,10.75.167.109:2184" default="false"/>
+    <dubbo:service interface="com.csz.rpc.api.DubboServiceRpcApi" ref="dubboServiceRpcApi" registry="hpRegistryCenter,macRegistryCenter"/>
+
+    -->
+
+    <!--
+
+    <dubbo:registry id="hpRegistryCenter" address="zookeeper://10.75.167.109:7181?backup=10.75.167.109:7182,10.75.167.109:7183" />
+
+    <dubbo:registry id="dellRegistryCenter" address="zookeeper://10.75.166.79:2181" default="false"/>
+
+    <dubbo:registry id="dellRegistryCenter" address="zookeeper://10.75.166.79:3181?backup=10.75.166.79:3182,10.75.166.79:3183" default="false"/>
+    <dubbo:registry id="dellRegistryCenter" address="zookeeper://10.75.166.79:9181?backup=10.75.166.79:9182,10.75.166.79:9183" default="false"/>
+
+    -->
+    <!-- use dubbo protocol to export service on port 20880 -->
+    <!--
+    <dubbo:protocol name="dubbo" port="20880"/>
+    -->
+
+    <!-- service implementation, as same as regular local bean -->
+    <bean id="dubboServiceRpcApi" class="com.csz.rpc.impl.DubboServiceRpcImpl"/>
+
+    <!-- declare the service interface to be exported
+    <dubbo:service interface="com.csz.rpc.api.DubboServiceRpcApi" ref="dubboServiceRpcApi" registry="hpRegistryCenter,macRegistryCenter"/>
+    <dubbo:service interface="com.csz.rpc.api.DubboServiceRpcApi" ref="dubboServiceRpcApi" registry="hpRegistryCenter"/>
+    -->
+    <dubbo:service interface="com.csz.rpc.api.DubboServiceRpcApi" ref="dubboServiceRpcApi" />
+
+    <!--
+
+
+    <dubbo:service interface="com.csz.rpc.api.DubboServiceRpcApi" ref="dubboServiceRpcApi" registry="dellRegistryCenter,hpRegistryCenter"/>
+
+
+    -->
+
+    <!-- 定时调度任务 -->
+    <task:scheduler id="schedulerJobs" pool-size="1"/>
+
+    <task:scheduled-tasks scheduler="schedulerJobs">
+        <task:scheduled ref="springScheduleService" method="schedule" cron="30 48 19 * * ?" />
+    </task:scheduled-tasks>
+
+
+</beans>
