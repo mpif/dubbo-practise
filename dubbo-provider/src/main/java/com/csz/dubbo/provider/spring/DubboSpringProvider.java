@@ -16,8 +16,8 @@ public class DubboSpringProvider {
         System.setProperty("java.net.preferIPv4Stack", "true");
 
         String[] xmls = new String[]{
-//            "dubbo-practise-provider.xml"
-            "dubbo-provider-noRegistry.xml"
+            "dubbo-practise-provider.xml"
+//            "dubbo-provider-noRegistry.xml"
         };
 
 //        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(new String[]{"META-INF/spring/dubbo-demo-provider.xml"});

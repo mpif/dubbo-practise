@@ -68,7 +68,7 @@ limitations under the License.
     <!--<dubbo:registry id="macRegistryCenter" address="zookeeper://10.75.167.77:2182?backup=10.75.167.77:2183,10.75.167.77:2184" />-->
 
     <!-- group必须与消费者的group一致,否则会报错 -->
-    <dubbo:registry id="hpRegistryCenter" address="zookeeper://10.75.167.109:2182?backup=10.75.167.109:2183,10.75.167.109:2184" default="false" group="std-test" />
+    <dubbo:registry id="hpRegistryCenter" address="zookeeper://10.58.87.142:2182?backup=10.58.87.142:2183,10.58.87.142:2184" default="false" group="std-test" />
 
 
     <!--
