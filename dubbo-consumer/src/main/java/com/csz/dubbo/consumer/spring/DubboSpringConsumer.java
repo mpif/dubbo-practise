@@ -18,8 +18,8 @@ public class DubboSpringConsumer {
         System.setProperty("java.net.preferIPv4Stack", "true");
 
         String[] xmls = new String[]{
-//            "dubbo-practise-consumer.xml"
-                "dubbo-consumer-noRegistry.xml"
+            "dubbo-practise-consumer.xml"
+//                "dubbo-consumer-noRegistry.xml"
         };
 
 //        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(new String[]{"META-INF/spring/dubbo-demo-consumer.xml"});

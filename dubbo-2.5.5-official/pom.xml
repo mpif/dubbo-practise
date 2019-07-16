@@ -356,6 +356,13 @@
                 <artifactId>cglib-nodep</artifactId>
                 <version>${cglib_version}</version>
             </dependency>
+
+            <dependency>
+                <groupId>de.ruedigermoeller</groupId>
+                <artifactId>fst</artifactId>
+                <version>1.55</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
     <dependencies>
