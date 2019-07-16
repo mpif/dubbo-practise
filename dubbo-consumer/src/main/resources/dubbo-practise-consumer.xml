@@ -27,6 +27,7 @@ limitations under the License.
     <!-- consumer's application name, used for tracing dependency relationship (not a matching criterion),
     don't set it same as provider -->
     <dubbo:application name="demo-consumer"/>
+    <dubbo:protocol serialization="kryo" ></dubbo:protocol>
 
     <!-- use multicast registry center to discover service -->
     <!--
