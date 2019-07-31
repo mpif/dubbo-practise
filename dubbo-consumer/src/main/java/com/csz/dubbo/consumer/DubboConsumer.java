@@ -8,7 +8,7 @@ public class DubboConsumer {
 
     public static void main(String[] args) {
 
-//        Main.
+        com.alibaba.dubbo.container.Main.main(args);
 
     }
 

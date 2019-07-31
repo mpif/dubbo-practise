@@ -43,6 +43,15 @@ limitations under the License.
     <!--<dubbo:protocol serialization="fst" ></dubbo:protocol>-->
     <dubbo:protocol serialization="jackson" ></dubbo:protocol>
 
+    <!-- 添加dubbo-monitor监控 -->
+    <dubbo:monitor protocol="registry" />
+    <!--
+        其中，10.58.84.55是dubbo-monitor部署的机器，
+        7171是conf/dubbo.properties文件中配置的dubbo.protocol.port对应的属性值。
+    -->
+    <dubbo:monitor address="10.58.84.55:7171" />
+
+
     <!-- use multicast registry center to export service -->
     <!--
     <dubbo:registry address="multicast://224.5.6.7:1234"/>
