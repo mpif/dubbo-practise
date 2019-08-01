@@ -1,6 +1,7 @@
 package com.csz.dubbo.consumer.spring;
 
 import com.csz.rpc.api.DubboServiceRpcApi;
+import com.csz.rpc.api.ProductServiceRpcApi;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.text.SimpleDateFormat;
@@ -26,12 +27,17 @@ public class DubboSpringConsumer {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(xmls);
         context.start();
         DubboServiceRpcApi demoService = (DubboServiceRpcApi) context.getBean("dubboServiceRpcApi"); // get remote service proxy
+        ProductServiceRpcApi productServiceRpcApi = (ProductServiceRpcApi) context.getBean("productServiceRpcApi"); // get remote service proxy
 
+        int index = 1;
         while (true) {
             try {
                 Thread.sleep(1000);
-                String hello = demoService.sayHello("world"); // call remote method
-                System.out.println("[" + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()) + "]" + hello); // get result
+//                String hello = demoService.sayHello("world"); // call remote method
+//                System.out.println("[" + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()) + "]" + hello); // get result
+
+                String productName = productServiceRpcApi.queryProductName("2019080100" + index++);
+                System.out.println("get productName=[" + productName + "] from provider.");
 
             } catch (Throwable throwable) {
                 throwable.printStackTrace();

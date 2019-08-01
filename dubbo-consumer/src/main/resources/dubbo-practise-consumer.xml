@@ -27,12 +27,12 @@ limitations under the License.
     <!-- consumer's application name, used for tracing dependency relationship (not a matching criterion),
     don't set it same as provider -->
     <dubbo:application name="demo-consumer"/>
-    <!--<dubbo:protocol serialization="kryo" ></dubbo:protocol>-->
+    <dubbo:protocol serialization="kryo" ></dubbo:protocol>
     <!--<dubbo:protocol serialization="fst" ></dubbo:protocol>-->
     <!--<dubbo:protocol serialization="jackson" ></dubbo:protocol>-->
 
     <!--<dubbo:monitor protocol="registry" />-->
-    <dubbo:monitor address="10.58.84.55:7171" />
+    <!--<dubbo:monitor address="10.58.84.55:7171" />-->
 
     <!-- use multicast registry center to discover service -->
     <!--
@@ -85,5 +85,8 @@ limitations under the License.
     <!-- generate proxy for the remote service, then demoService can be used in the same way as the
     local regular interface -->
     <dubbo:reference id="dubboServiceRpcApi" check="false" interface="com.csz.rpc.api.DubboServiceRpcApi"/>
+
+    <dubbo:reference id="productServiceRpcApi" interface="com.csz.rpc.api.ProductServiceRpcApi" registry="hpRegistryCenter"/>
+
 
 </beans>
