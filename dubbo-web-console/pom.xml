@@ -14,7 +14,7 @@
     <properties>
 
         <!-- dubbo-2.5.5-official/dubbo/这个module的version -->
-        <dubbo_version>2.5.5</dubbo_version>
+        <dubbo_version>2.6.9</dubbo_version>
 
         <!-- Common libs -->
         <!-- from dubbo-admin -->
