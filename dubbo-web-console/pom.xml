@@ -27,7 +27,7 @@
         <fastjson_version>1.2.31</fastjson_version>
         <xstream_version>1.4.1</xstream_version>
         <bsf_version>3.1</bsf_version>
-        <zookeeper_version>3.4.9</zookeeper_version>
+        <zookeeper_version>3.4.14</zookeeper_version>
         <zkclient_version>0.2</zkclient_version>
         <curator_version>2.12.0</curator_version>
         <xmemcached_version>1.3.6</xmemcached_version>
